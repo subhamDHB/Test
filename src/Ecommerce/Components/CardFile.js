@@ -16,11 +16,10 @@ const CardFile = ({allData}) => {
            {
             allData.products.map((ele,index)=>(
                 <div className='card2' key={index}>
-                <p>{ele.title}</p>
+              
                 <img src={ele.image} alt= '' style={{height:'100px',width:'100px'}}/>
                 <p>Price : ${ele.price}</p>
-                <p>rating {ele.rating.rate}/5</p>
-                 <p>count {ele.rating.count}</p>
+               
                 <button style={{backgroundColor:'green'}} onClick={()=>dispatch(InsertToCart(ele))}>Add to Cart</button>
                 {
                     data.CartItems.includes(ele)?<button style={{backgroundColor:'red'}}
