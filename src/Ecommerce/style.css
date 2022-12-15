@@ -1,0 +1,21 @@
+
+
+.card1{
+    display: flex;
+    flex-wrap: wrap;
+    flex: 100%;
+    width: 100%;
+}
+
+
+
+.card2{
+    border: 1px solid black;
+    width: 25rem;
+    height: 20rem;
+    overflow: hidden;
+}
+
+.listStyle{
+    style:none
+}

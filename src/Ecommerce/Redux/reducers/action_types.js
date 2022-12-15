@@ -1,0 +1,3 @@
+export const ADD_DATA="ADD_DATA"
+export const INSERT_TO_CART="INSERT_TO_CART"
+export const DELETE_FROM_CART="DELETE_FROM_CART"
