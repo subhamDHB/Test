@@ -13,6 +13,8 @@ const EcomActivityReducer =(state=initialState,action)=>{
                 products:[...action.payload]
             }
         case INSERT_TO_CART:
+
+        
             return {
                 ...state,
                 CartItems:[...state.CartItems,action.payload],
