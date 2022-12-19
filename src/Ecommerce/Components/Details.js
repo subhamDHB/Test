@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import Navigations from "../Navigation/Navigations";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
@@ -6,16 +6,17 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 export const Details = () => {
-    const data = useSelector((state) => state.ecom);
+    const data = useSelector(state => state.ecom);
     const {id} = useParams();
     const navic=useNavigate();
     const[details,setDetails]=useState([]);
-    useEffect(()=>{
-        let data1=data.products.filter(ele=>ele.id===1);
-        console.log(id);
+    useLayoutEffect(()=>{
+        console.log(data)
+        let data1=data.products.filter(ele=>ele.id=== parseInt(id));
+        console.log('id is',id);
         setDetails(data1)
     },[])
-    useEffect(()=>console.log(details),[])
+    useLayoutEffect(()=>console.log(details),[])
   return (
     <div>
       <Navigations />
