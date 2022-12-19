@@ -1,25 +1,30 @@
 import React from 'react'
-
+import './NavStyle.css'
 import { useSelector } from "react-redux";
 
 import { Outlet, Link } from "react-router-dom";
+import HomePage from '../UI/HomePage';
 const Navigations = () => {
 const totalItem=useSelector((state) => state.ecom.totalItem);
   return (
     <>
 
     <nav>
-      <ul style={{display:'flex',padding:'5px',gap:'30px',fontWeight:'bolder',color:'black'}}>
-        <li style={{listStyle:'none'}}>
-          <div style={{backgroundColor:'yellow',}}><Link to="/">Home</Link></div>
+      <ul >
+      <li >
+         <div style={{fontSize:'25px'}}><Link to="/">HomePage</Link></div> 
         </li>
-        <li style={{listStyle:'none'}}>
-         <div style={{backgroundColor:'yellow',}}><Link to="/cart">cart {totalItem}</Link></div> 
+        <li >
+          <div style={{fontSize:'25px'}}><Link to="/data">Store</Link></div>
+        </li>
+        <li style={{float:'right'}}>
+         <div style={{fontSize:'25px'}}><Link to="/cart">cart {totalItem}</Link></div> 
         </li>
       </ul>
     </nav>
-
+  
     <Outlet />
+   
   </>
   )
 }

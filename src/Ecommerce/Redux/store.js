@@ -1,9 +1,4 @@
-// import thunk from 'redux-thunk'
 
-// import {legacy_createStore as createStore} from "redux";
-// import {applyMiddleware} from "redux";
-// import rootReducer from './reducers/index'
-// export const store = createStore(rootReducer,applyMiddleware(thunk));
 
 import {legacy_createStore as createStore} from "redux";
 import rootReducer from './reducers/index';
@@ -21,7 +16,6 @@ const persist= persistReducer(persistConfig,rootReducer)
 const store =createStore(persist,undefined, middlewareEnhancer)
 
 
-// const store =createStore(rootReducer, middlewareEnhancer)
-const persistor=persistStore(store);
-export {store,persistor}
-// export {store}
+
+// const persistor=persistStore(store);
+export {store}

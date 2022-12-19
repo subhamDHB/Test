@@ -1,40 +1,47 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
+import CardGroup from 'react-bootstrap/CardGroup';
 import { useSelector, useDispatch } from "react-redux";
-import Navigations from '../Navigation/Navigations';
-import {InsertToCart,DeleteFromCart} from '../Redux/reducers/Actions'
-const CardFile = ({allData}) => {
- const data = useSelector((state) => state.ecom);
- const dispatch=useDispatch();
- useEffect(()=>{
-  console.log(allData)  
- })
+import Navigations from "../Navigation/Navigations";
+import { InsertToCart, DeleteFromCart } from "../Redux/reducers/Actions";
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import { useNavigate } from "react-router";
+const CardFile = ({ allData }) => {
+  const data = useSelector((state) => state.ecom);
+  const dispatch = useDispatch();
+  const navic=useNavigate();
   return (
-    <div>
-        <Navigations/>
-      <div className='card1'>
+    <>
+      <Navigations style={{position: 'fixed'}}/>
+
+    {
+      data.products.map((ele,index)=>(
       
-           {
-            allData.products.map((ele,index)=>(
-                <div className='card2' key={index}>
-              
-                <img src={ele.image} alt= '' style={{height:'100px',width:'100px'}}/>
-                <p>Price : ${ele.price}</p>
-                <p>Price : ${ele.price}</p>
-                <button style={{backgroundColor:'green'}} onClick={()=>dispatch(InsertToCart(ele))}>Add to Cart</button>
-                {
-                    data.CartItems.includes(ele)?<button style={{backgroundColor:'red'}}
-                    onClick={()=>dispatch(DeleteFromCart(ele))}
-                    >Remove from Cart</button>:''
-                }
-                
-               </div>
-               
-            ))
-           }
-    </div>
-    </div>
-  )
-}
+      <CardGroup style={{width:'400px',display:'flex'}} key={ele.id}>
+      <Card>
+        <Card.Img variant="top" src={ele.image} style={{height:'150px',width:'150px'}}/>
+        <Card.Body>
+          <Card.Title>{ele.title}</Card.Title>
+          <Card.Text>
+            Price : ${ele.price} USD
+          </Card.Text>
+        </Card.Body>
+        <Button variant="success" onClick={()=>dispatch(InsertToCart(ele))}>Add To Cart</Button>
+          {data.CartItems.includes(ele) ? (
+            <Button variant="danger" onClick={()=>dispatch(DeleteFromCart(ele))}>Remove From Cart</Button>
+            ) : (
+              ""
+            )} 
+          
+          <Button variant="primary" onClick={()=>navic(`/details/${ele.id}`)}>See Details</Button>
+        
+      </Card>
+  
+    </CardGroup>
+      ))
+    }
+    </>
+  );
+};
 
-export default CardFile
-
+export default CardFile;

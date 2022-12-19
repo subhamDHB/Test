@@ -10,6 +10,7 @@ export const fetchData=()=>async function fetchProducts(dispatch){
         dispatch(getData(response.data))
     }
 
+    
 export const InsertToCart=(data)=>{
     return{
         type:INSERT_TO_CART,
